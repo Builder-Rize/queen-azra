@@ -20,23 +20,19 @@ function showPage(pageId) {
     // Tüm sayfaları gizle
     document.querySelectorAll('.page').forEach(page => {
         page.classList.remove('active');
-        page.style.display = 'none';
     });
     
-    // Hedef sayfayı göster
-    const targetPage = document.getElementById(pageId);
-    if (!targetPage) {
-        console.error('Sayfa bulunamadı:', pageId);
-        return;
-    }
+    // Seçilen sayfayı göster
+    document.getElementById(pageId).classList.add('active');
     
-    // Cards sayfası için özel kontrol (flex yerine block)
+    // Mavi kalp yağmuru kontrolü
+    const blueHeartsContainer = document.getElementById('blueHeartsContainer');
     if (pageId === 'cards') {
-        targetPage.style.display = 'block';
+        blueHeartsContainer.style.display = 'block';
     } else {
-        targetPage.style.display = 'flex';
+        blueHeartsContainer.style.display = 'none';
     }
-    
+}    
     // Animasyon için kısa gecikme
     requestAnimationFrame(() => {
         targetPage.classList.add('active');
@@ -44,7 +40,6 @@ function showPage(pageId) {
     
     // Sayfayı en üste kaydır
     window.scrollTo({ top: 0, behavior: 'smooth' });
-}
 
 // ========================================
 // HAYIR BUTONU - DÜZELTİLMİŞ
