@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Queen Azra 👑</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- Düşen Gül Yaprakları -->
+    <div class="rose-petals-container">
+        <div class="petal" style="left: 10%; animation-delay: 0s;">🌹</div>
+        <div class="petal" style="left: 20%; animation-delay: 1s;">🥀</div>
+        <div class="petal" style="left: 30%; animation-delay: 0.5s;">🌹</div>
+        <div class="petal" style="left: 40%; animation-delay: 2s;">🥀</div>
+        <div class="petal" style="left: 50%; animation-delay: 1.5s;">🌹</div>
+        <div class="petal" style="left: 60%; animation-delay: 0.8s;">🥀</div>
+        <div class="petal" style="left: 70%; animation-delay: 2.5s;">🌹</div>
+        <div class="petal" style="left: 80%; animation-delay: 1.2s;">🥀</div>
+        <div class="petal" style="left: 90%; animation-delay: 0.3s;">🌹</div>
+        <div class="petal" style="left: 15%; animation-delay: 3s;">🥀</div>
+        <div class="petal" style="left: 25%; animation-delay: 1.8s;">🌹</div>
+        <div class="petal" style="left: 35%; animation-delay: 2.2s;">🥀</div>
+        <div class="petal" style="left: 45%; animation-delay: 0.7s;">🌹</div>
+        <div class="petal" style="left: 55%; animation-delay: 2.8s;">🥀</div>
+        <div class="petal" style="left: 65%; animation-delay: 1.4s;">🌹</div>
+        <div class="petal" style="left: 75%; animation-delay: 0.2s;">🥀</div>
+        <div class="petal" style="left: 85%; animation-delay: 3.2s;">🌹</div>
+        <div class="petal" style="left: 5%; animation-delay: 1.6s;">🥀</div>
+    </div>
+
+    <!-- SAYFA 1: AÇILIŞ -->
+    <section id="landing" class="page active">
+        <div class="stars"></div>
+        <div class="crown">👑</div>
+        <h1 class="title">Kraliçem...</h1>
+        <p class="subtitle">Sana özel bir şey hazırladım</p>
+        
+        <!-- MÜZİK BUTONU -->
+        <button class="btn-music" onclick="toggleMusic()">🎵 Let It Happen - Dinle</button>
+        
+        <button class="btn-gold" onclick="showPage('forgive'); pauseMusic();">KEŞFET ✨</button>
+        
+        <!-- Gizli Audio Player -->
+        <audio id="audioPlayer" loop>
+            <source src="images/let-it-happened.mp3" type="audio/mpeg">
+            Tarayıcınız ses desteklemiyor.
+        </audio>
+    </section>
+
+    <!-- SAYFA 2: AFET OYUNU -->
+    <section id="forgive" class="page">
+        <div class="hearts-bg"></div>
+        <h2 class="question">Beni Affeder misin Azra?</h2>
+        <p class="sub-text">Kraliçem, lütfen affet beni... 🥺</p>
+        
+        <div class="button-container">
+            <button id="yesBtn" class="btn-yes" onclick="handleYes()">EVET 💙</button>
+            <button id="noBtn" class="btn-no" onclick="handleNo()">HAYIR</button>
+        </div>
+        
+        <p id="message" class="message"></p>
+    </section>
+
+    <!-- SAYFA 3: KARTLAR -->
+    <section id="cards" class="page">
+        <h2 class="cards-title">Şimdi sana özel hazırladıklarıma bakalım...</h2>
+        
+        <div class="cards-container">
+            <!-- KART 1: Korku Oyunu -->
+            <div class="card">
+                <div class="pixel-border top">
+                    <div class="pixel-pattern">💙👑💙👑💙👑💙👑</div>
+                </div>
+                <div class="card-image">
+                    <img src="images/korku-oyunu.jpg" alt="İlk korku oyunu">
+                </div>
+                <div class="pixel-border bottom">
+                    <div class="pixel-pattern">👑💙👑💙👑💙👑💙</div>
+                </div>
+                <div class="card-text">
+                    <p>Hmmmm bunu hatırlıyormusun beraber oynadığımız ilk korku oyunuydu ve o gün cidden çok eğlenmiştim seninle tanıştığımız ilk günlerde girdiğimiz bir oyundu. Evet farkındayım o gün bu kadar yakın değildik belki ama o gün cidden eğlenmiştim 😝o gün çığlığımıda duymuş olman lazım senin ve hatta ondan sonra ise sende ölmüştün bişiler bişiler qhsdqwjhqsdqw. Eğlenmiştim o gün zaten seni merak etmeye başlamıştım dahada... Bu arada çok yakışıklı çıkmışım haaa KARİZMAYA BAK!!!</p>
+                </div>
+            </div>
+
+            <!-- KART 2: Let It Happen -->
+            <div class="card">
+                <div class="pixel-border top">
+                    <div class="pixel-pattern">🎵💙🎵💙🎵💙🎵💙</div>
+                </div>
+                <div class="card-image">
+                    <img src="images/let-it-happen.gif" alt="Let It Happen">
+                </div>
+                <div class="pixel-border bottom">
+                    <div class="pixel-pattern">💙🎵💙🎵💙🎵💙🎵</div>
+                </div>
+                <div class="card-text">
+                    <p>Bana attığın en sevdiğin şarkılardan biriydi bu ''Let it happen'' unutmadım hala hatırlıyorum ve evet benimde en sevdiğim şarkılardan dı o şarkı</p>
+                </div>
+            </div>
+
+            <!-- KART 3: Kedi -->
+            <div class="card">
+                <div class="pixel-border top">
+                    <div class="pixel-pattern">🐱💙🐱💙🐱💙🐱💙</div>
+                </div>
+                <div class="card-image">
+                    <img src="images/kedi.jpg" alt="Kedi">
+                </div>
+                <div class="pixel-border bottom">
+                    <div class="pixel-pattern">💙🐱💙🐱💙🐱💙🐱</div>
+                </div>
+                <div class="card-text">
+                    <p>Bana attığın bu kediyi hatırlıyormusun? Ben hatırlıyorum o gün dışarda çektiğin bir kediydi ve bana atmıştın ve kedileride çok sevdiğini o zamanda biliyordum şimdide biliyorum</p>
+                </div>
+            </div>
+
+            <!-- KART 4: Oda Köşesi -->
+            <div class="card">
+                <div class="pixel-border top">
+                    <div class="pixel-pattern">🏠💙🏠💙🏠💙🏠💙</div>
+                </div>
+                <div class="card-image">
+                    <img src="images/oda.jpg" alt="Oda köşesi">
+                </div>
+                <div class="pixel-border bottom">
+                    <div class="pixel-pattern">💙🏠💙🏠💙🏠💙🏠</div>
+                </div>
+                <div class="card-text">
+                    <p>Evet... Bu arada çok korkunç olduğunu vesaire anlatıyordun bana odanın ve en köşede bana yazıyordun hatta kaplumbağamı bir tane peluşun vardı senin kocaman böyle onuda hatırlıyorum ve eğleniyordum seninle konuşurken ne kadar kendine şimdi o zaman ''Egoist Azra'' desende ben seni hala merak ediyordum o yüzden herzaman sana saygı duyuyordum çünkü herzaman ne kadar desende ''Benim duygulara ihtiyacım yok'' vesaire... ben o günlerde bile senin birgün cidden benim ne demek istediğimi anlayacağını biliyordum ve şimdi geri döndün ve hala daha aynı sıcaklıktayım sana ama cidden şuanda dahada çok seviyorum seni o gün sevdiğimden çok...</p>
+                </div>
+            </div>
+
+            <!-- KART 5: Dexter -->
+            <div class="card">
+                <div class="pixel-border top">
+                    <div class="pixel-pattern">🔪💙🔪💙🔪💙🔪💙</div>
+                </div>
+                <div class="card-image">
+                    <img src="images/dexter.jpg" alt="Dexter">
+                </div>
+                <div class="pixel-border bottom">
+                    <div class="pixel-pattern">💙🔪💙🔪💙🔪💙🔪</div>
+                </div>
+                <div class="card-text">
+                    <p>DEXTEEEERRRR!!!! Dextersız bir Azra Turşusuz bir Quuen'e benzer! Sırf sen başladın diye dexter izlemeye başlamıştım gizliden gizliden ve seninle izlemek için uğraşıyordum bir şekilde çünkü ''Belki sese girersem Azrayı dahada iyi anlarım ve ona daha çok yakınlaşırım'' vesaire diye düşünüyordum ancak... birkez oldu ama o anı unutmadım çok eğlendim yalan söylemicem hemde aşırı şekilde eğlendim ve güldüm arkada gizliden. Biraz kendimi ifşalamak gibi oluyor ama bilemicem...</p>
+                </div>
+            </div>
+
+            <!-- KART 6: Özel Video ve Yazı -->
+            <div class="card card-6">
+                <div class="card-6-container">
+                    <!-- Sol: Video -->
+                    <div class="card-6-video-section">
+                        <div class="pixel-border top">
+                            <div class="pixel-pattern">🌙💙🌙💙🌙💙🌙💙</div>
+                        </div>
+                        <div class="video-container">
+                            <video autoplay loop muted playsinline>
+                                <source src="images/girl.mp4" type="video/mp4">
+                                Tarayıcınız video desteklemiyor.
+                            </video>
+                        </div>
+                        <div class="pixel-border bottom">
+                            <div class="pixel-pattern">💙🌙💙🌙💙🌙💙🌙</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sağ: Yazı Kartı -->
+                    <div class="card-6-text-section">
+                        <div class="text-card">
+                            <div class="text-card-header">
+                                <span class="crown-small">👑</span>
+                                <span class="text-card-title">Kraliçeme</span>
+                                <span class="crown-small">👑</span>
+                            </div>
+                            <div class="text-card-content">
+                                <p>Evet, herşeyi okuduğun ve geri döndüğün için hala mutluyum umarım GENE ENGEL YEMEM qwdjqsbdkqh, şaka bi yana tekrardan teşekkür ederim geri döndüğün için büyük ihtimalle gelmesen ben gene yalnız kalmaya devam edicektim tek takılmaya ve sadece erkeklerle konuşmaya vesaire vesaireee...</p>
+                            </div>
+                            <div class="text-card-footer">
+                                <span class="heart-beat">💙</span>
+                                <span class="date">25.02.2009</span>
+                                <span class="heart-beat">💙</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SON MESAJ -->
+        <div class="final-message">
+            <div class="final-crown">👑</div>
+            <p class="birthday-note">25.02.2009 - Dünyanın en değerli günü.<br>İyi ki doğmuşsun Kraliçem.</p>
+            <div class="final-hearts">
+                <span class="heart-float">💙</span>
+                <span class="heart-float">🌹</span>
+                <span class="heart-float">💙</span>
+            </div>
+        </div>
+    </section>
+
+    <canvas id="confetti"></canvas>
+    <script src="script.js"></script>
+</body>
+</html>

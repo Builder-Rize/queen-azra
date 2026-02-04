@@ -1,0 +1,904 @@
+/* ========================================
+   MY QUEEN AZRA - ROYAL THEME
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --royal-blue: #1e3a8a;
+    --dark-blue: #0f172a;
+    --light-blue: #3b82f6;
+    --sky-blue: #60a5fa;
+    --gold: #fbbf24;
+    --light-gold: #f59e0b;
+    --dark-gold: #d97706;
+    --white: #ffffff;
+    --cream: #fef3c7;
+    --rose: #f43f5e;
+    --light-rose: #fb7185;
+}
+
+html, body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--dark-blue) 0%, var(--royal-blue) 50%, #1e1b4b 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: var(--white);
+    position: relative;
+}
+
+/* ========================================
+   KONFETİ CANVAS
+   ======================================== */
+#confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* ========================================
+   DÜŞEN GÜL YAPRAKLARI - EN ALTA
+   ======================================== */
+.rose-petals-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none !important;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.petal {
+    position: absolute;
+    top: -50px;
+    font-size: 24px;
+    opacity: 0.8;
+    animation: fall linear infinite;
+    filter: drop-shadow(0 0 5px var(--rose));
+    pointer-events: none !important;
+    user-select: none;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg) translateX(0);
+        opacity: 1;
+    }
+    25% {
+        transform: translateY(25vh) rotate(90deg) translateX(20px);
+    }
+    50% {
+        transform: translateY(50vh) rotate(180deg) translateX(-20px);
+    }
+    75% {
+        transform: translateY(75vh) rotate(270deg) translateX(15px);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg) translateX(0);
+        opacity: 0;
+    }
+}
+
+.petal:nth-child(odd) {
+    animation-duration: 8s;
+    font-size: 20px;
+}
+
+.petal:nth-child(even) {
+    animation-duration: 10s;
+    font-size: 28px;
+}
+
+/* ========================================
+   SAYFA YÖNETİMİ
+   ======================================== */
+.page {
+    display: none;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+    animation: fadeIn 0.8s ease;
+}
+
+.page.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================
+   AÇILIŞ SAYFASI - DÜZELTİLMİŞ
+   ======================================== */
+#landing {
+    text-align: center;
+    background: radial-gradient(circle at center, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+    position: relative;
+    z-index: 10;
+}
+
+/* Yıldızlar arka planda kalsın */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none !important;
+    z-index: 1;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, white, transparent),
+        radial-gradient(2px 2px at 40px 70px, white, transparent),
+        radial-gradient(1px 1px at 50px 90px, white, transparent),
+        radial-gradient(2px 2px at 130px 80px, white, transparent),
+        radial-gradient(1px 1px at 80px 10px, white, transparent),
+        radial-gradient(2px 2px at 150px 120px, white, transparent),
+        radial-gradient(1px 1px at 200px 50px, white, transparent),
+        radial-gradient(2px 2px at 250px 180px, white, transparent);
+    background-repeat: repeat;
+    background-size: 300px 300px;
+    animation: twinkle 4s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* İçerikler butonların altında */
+.crown {
+    font-size: 100px;
+    animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 0 30px var(--gold));
+    position: relative;
+    z-index: 5;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-25px) rotate(5deg); }
+}
+
+@keyframes glow {
+    from { filter: drop-shadow(0 0 20px var(--gold)); }
+    to { filter: drop-shadow(0 0 40px var(--gold)) drop-shadow(0 0 60px var(--light-gold)); }
+}
+
+.title {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    color: var(--gold);
+    text-shadow: 
+        0 0 10px rgba(251, 191, 36, 0.5),
+        0 0 20px rgba(251, 191, 36, 0.3),
+        4px 4px 8px rgba(0,0,0,0.5);
+    margin-bottom: 15px;
+    animation: slideIn 1s ease;
+    position: relative;
+    z-index: 5;
+    pointer-events: none;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.subtitle {
+    font-size: 20px;
+    color: var(--cream);
+    margin-bottom: 50px;
+    opacity: 0.9;
+    letter-spacing: 2px;
+    animation: slideIn 1s ease 0.3s both;
+    position: relative;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* ========================================
+   MÜZİK BUTONU - TAMAMEN DÜZELTİLMİŞ
+   ======================================== */
+.btn-music {
+    background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 30px;
+    margin-bottom: 25px;
+    cursor: pointer !important;
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+    animation: pulse 2s infinite;
+    transition: all 0.3s;
+    font-family: 'Poppins', sans-serif;
+    
+    /* TIKLANABİLİRLİK İÇİN EN YÜKSEK ÖNCELİK */
+    position: relative;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    
+    /* Görünürlük */
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-block !important;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.btn-music:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(236, 72, 153, 0.6);
+    cursor: pointer !important;
+}
+
+.btn-music:active {
+    transform: scale(0.95);
+    cursor: pointer !important;
+}
+
+.btn-music.playing {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    animation: none;
+}
+
+/* ========================================
+   ALTIN BUTON
+   ======================================== */
+.btn-gold {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--light-gold) 50%, var(--dark-gold) 100%);
+    color: var(--dark-blue);
+    border: none;
+    padding: 20px 50px;
+    font-size: 22px;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer !important;
+    box-shadow: 
+        0 4px 15px rgba(251, 191, 36, 0.4),
+        0 0 30px rgba(251, 191, 36, 0.2);
+    transition: all 0.3s;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    overflow: hidden;
+    animation: slideIn 1s ease 0.6s both;
+    
+    /* TIKLANABİLİRLİK */
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+    user-select: none;
+    touch-action: manipulation;
+}
+
+.btn-gold::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s;
+}
+
+.btn-gold:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 
+        0 8px 25px rgba(251, 191, 36, 0.6),
+        0 0 40px rgba(251, 191, 36, 0.3);
+}
+
+.btn-gold:active {
+    transform: translateY(-2px) scale(1.02);
+}
+
+.btn-gold:hover::before {
+    left: 100%;
+}
+
+/* ========================================
+   AFET SAYFASI
+   ======================================== */
+#forgive {
+    text-align: center;
+    background: radial-gradient(circle at center, rgba(244, 63, 94, 0.15) 0%, transparent 70%);
+    position: relative;
+    z-index: 10;
+}
+
+.hearts-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none !important;
+    z-index: 1;
+    opacity: 0.1;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40">💙</text></svg>');
+    background-size: 60px 60px;
+    animation: pulseBg 4s infinite;
+}
+
+@keyframes pulseBg {
+    0%, 100% { opacity: 0.05; }
+    50% { opacity: 0.15; }
+}
+
+.question {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    color: var(--gold);
+    margin-bottom: 20px;
+    text-shadow: 
+        0 0 20px rgba(251, 191, 36, 0.5),
+        4px 4px 8px rgba(0,0,0,0.5);
+    animation: bounceIn 0.8s ease;
+    position: relative;
+    z-index: 5;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.sub-text {
+    font-size: 20px;
+    color: var(--cream);
+    margin-bottom: 60px;
+    opacity: 0.9;
+    position: relative;
+    z-index: 5;
+}
+
+.button-container {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    position: relative;
+    z-index: 100;
+}
+
+.btn-yes {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: none;
+    padding: 25px 60px;
+    font-size: 28px;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer !important;
+    box-shadow: 
+        0 4px 20px rgba(16, 185, 129, 0.4),
+        0 0 30px rgba(16, 185, 129, 0.2);
+    transition: all 0.3s;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    overflow: hidden;
+    pointer-events: auto !important;
+    z-index: 1000;
+    user-select: none;
+    touch-action: manipulation;
+}
+
+.btn-yes::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn-yes:hover {
+    transform: scale(1.1);
+    box-shadow: 
+        0 8px 30px rgba(16, 185, 129, 0.6),
+        0 0 40px rgba(16, 185, 129, 0.3);
+}
+
+.btn-yes:active {
+    transform: scale(1.05);
+}
+
+.btn-yes:hover::before {
+    left: 100%;
+}
+
+.btn-no {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    border: none;
+    padding: 18px 40px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer !important;
+    transition: all 0.3s;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+    pointer-events: auto !important;
+    z-index: 1000;
+    user-select: none;
+    touch-action: manipulation;
+}
+
+.btn-no:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
+}
+
+.btn-no:active {
+    transform: scale(0.95);
+}
+
+.message {
+    margin-top: 40px;
+    font-size: 24px;
+    color: var(--gold);
+    min-height: 40px;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+    position: relative;
+    z-index: 5;
+}
+
+/* ========================================
+   KARTLAR SAYFASI
+   ======================================== */
+#cards {
+    padding: 40px 20px;
+    display: none;
+    min-height: 100vh;
+    background: linear-gradient(180deg, var(--dark-blue) 0%, #1e1b4b 50%, var(--royal-blue) 100%);
+    position: relative;
+    z-index: 10;
+}
+
+#cards.active {
+    display: block;
+}
+
+.cards-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 50px;
+    text-shadow: 
+        0 0 20px rgba(251, 191, 36, 0.5),
+        4px 4px 8px rgba(0,0,0,0.5);
+    animation: fadeIn 1s ease;
+    position: relative;
+    z-index: 5;
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+}
+
+/* ========================================
+   PIXEL ÇERÇEVE
+   ======================================== */
+.pixel-border {
+    width: 100%;
+    background: linear-gradient(90deg, 
+        var(--royal-blue) 0%, 
+        var(--light-blue) 25%, 
+        var(--sky-blue) 50%, 
+        var(--light-blue) 75%, 
+        var(--royal-blue) 100%);
+    padding: 8px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.pixel-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(90deg, 
+            transparent 0px, 
+            transparent 4px, 
+            rgba(255,255,255,0.1) 4px, 
+            rgba(255,255,255,0.1) 8px);
+    pointer-events: none;
+}
+
+.pixel-border.top {
+    border-radius: 20px 20px 0 0;
+    border-bottom: 4px solid var(--gold);
+}
+
+.pixel-border.bottom {
+    border-radius: 0 0 20px 20px;
+    border-top: 4px solid var(--gold);
+}
+
+.pixel-pattern {
+    font-size: 20px;
+    letter-spacing: 10px;
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { opacity: 0.7; transform: translateX(0); }
+    50% { opacity: 1; transform: translateX(5px); }
+}
+
+/* ========================================
+   KART TASARIMI
+   ======================================== */
+.card {
+    background: rgba(30, 58, 138, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    overflow: hidden;
+    border: 3px solid var(--gold);
+    box-shadow: 
+        0 15px 35px rgba(0,0,0,0.4),
+        0 0 30px rgba(251, 191, 36, 0.1);
+    transition: all 0.4s;
+    animation: slideUp 0.8s ease;
+    position: relative;
+    z-index: 5;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.card:hover {
+    transform: translateY(-10px) rotate(1deg);
+    box-shadow: 
+        0 25px 50px rgba(0,0,0,0.5),
+        0 0 40px rgba(251, 191, 36, 0.2);
+    border-color: var(--light-gold);
+}
+
+.card-image {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--royal-blue), var(--dark-blue));
+    position: relative;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.card:hover .card-image img {
+    transform: scale(1.1);
+}
+
+.gif-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1e1b4b, #312e81);
+}
+
+.gif-placeholder {
+    text-align: center;
+    color: var(--gold);
+}
+
+.gif-icon {
+    font-size: 60px;
+    display: block;
+    animation: pulse 2s infinite;
+}
+
+.gif-text {
+    font-size: 24px;
+    font-weight: 700;
+    display: block;
+    margin: 10px 0;
+}
+
+.gif-subtext {
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+.card-text {
+    padding: 30px;
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--cream);
+    background: rgba(15, 23, 42, 0.5);
+}
+
+.card-text p {
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* ========================================
+   KART 6 - ÖZEL TASARIM
+   ======================================== */
+.card-6 {
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.4), rgba(30, 27, 75, 0.4));
+    border: 4px solid var(--gold);
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.5),
+        0 0 50px rgba(251, 191, 36, 0.15),
+        inset 0 0 30px rgba(251, 191, 36, 0.05);
+}
+
+.card-6-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    min-height: 400px;
+}
+
+.card-6-video-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.video-container {
+    flex: 1;
+    background: linear-gradient(135deg, #0f172a, #1e1b4b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-6-text-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background: rgba(15, 23, 42, 0.6);
+}
+
+.text-card {
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.8), rgba(30, 27, 75, 0.8));
+    border: 3px solid var(--gold);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 
+        0 10px 30px rgba(0,0,0,0.4),
+        0 0 20px rgba(251, 191, 36, 0.1);
+    max-width: 100%;
+}
+
+.text-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--gold);
+}
+
+.crown-small {
+    font-size: 24px;
+    animation: float 2s ease-in-out infinite;
+}
+
+.text-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--gold);
+    font-weight: 700;
+}
+
+.text-card-content {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--cream);
+    margin-bottom: 20px;
+}
+
+.text-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding-top: 15px;
+    border-top: 2px solid var(--gold);
+}
+
+.heart-beat {
+    font-size: 24px;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+}
+
+.date {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--gold);
+    font-weight: 600;
+}
+
+/* ========================================
+   SON MESAJ
+   ======================================== */
+.final-message {
+    text-align: center;
+    margin-top: 60px;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(30, 58, 138, 0.2));
+    border-radius: 30px;
+    border: 4px solid var(--gold);
+    box-shadow: 
+        0 15px 35px rgba(0,0,0,0.3),
+        0 0 40px rgba(251, 191, 36, 0.1);
+    animation: fadeIn 1s ease 0.5s both;
+    position: relative;
+    z-index: 5;
+}
+
+.final-crown {
+    font-size: 60px;
+    animation: glow 2s ease-in-out infinite alternate;
+    margin-bottom: 20px;
+}
+
+.birthday-note {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--gold);
+    line-height: 1.6;
+    margin-bottom: 25px;
+    text-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+}
+
+.final-hearts {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.heart-float {
+    font-size: 40px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.heart-float:nth-child(2) { animation-delay: 0.5s; }
+.heart-float:nth-child(3) { animation-delay: 1s; }
+
+/* ========================================
+   MOBİL UYUMLULUK
+   ======================================== */
+@media (max-width: 768px) {
+    .title { font-size: 42px; }
+    .question { font-size: 32px; }
+    .cards-title { font-size: 26px; }
+    
+    .card-6-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .card-6-text-section {
+        order: -1;
+    }
+    
+    .card-image {
+        height: 250px;
+    }
+    
+    .card-text {
+        padding: 20px;
+        font-size: 15px;
+    }
+    
+    .button-container {
+        flex-direction: column;
+        gap: 25px;
+    }
+    
+    .btn-yes {
+        padding: 20px 50px;
+        font-size: 24px;
+    }
+    
+    .pixel-pattern {
+        font-size: 16px;
+        letter-spacing: 5px;
+    }
+    
+    .rose-petals-container .petal {
+        font-size: 18px;
+    }
+    
+    .btn-music, .btn-gold {
+        z-index: 9999 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .title { font-size: 36px; }
+    .crown { font-size: 70px; }
+    .subtitle { font-size: 16px; }
+    .question { font-size: 26px; }
+    
+    .btn-gold {
+        padding: 18px 40px;
+        font-size: 18px;
+    }
+    
+    .card-text {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+    
+    .text-card-title {
+        font-size: 20px;
+    }
+    
+    .birthday-note {
+        font-size: 18px;
+    }
+    
+    .btn-music {
+        padding: 12px 28px;
+        font-size: 16px;
+    }
+}
